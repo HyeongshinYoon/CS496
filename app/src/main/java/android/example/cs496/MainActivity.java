@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    
+
     public void setupViewPager(ViewPager mViewPager) {
         sectionsPagerAdapter.addFragment(new TabFragment1(), "Phone");
         sectionsPagerAdapter.addFragment(new TabFragment2(), "Photos");
