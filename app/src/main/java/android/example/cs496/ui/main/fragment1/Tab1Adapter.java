@@ -10,28 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> {
-    private String[] textSet;
-    private int[] imgSet;
-    private String[] phoneSet;
 
-    public Tab1Adapter(String[] textSet, int[] imgSet, String[] phoneSet){
-        this.textSet = textSet;
-        this.imgSet = imgSet;
-        this.phoneSet = phoneSet;
-    }
+    List<RecyclerItem> datas;
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public TextView textView;
-        public TextView phoneView;
-
-        public MyViewHolder(View view){
-            super(view);
-            this.imageView = view.findViewById(R.id.iv_pic);
-            this.textView = view.findViewById(R.id.tv_text);
-            this.phoneView = view.findViewById(R.id.tv_phone);
-        }
+    public Tab1Adapter(List<RecyclerItem> datas){
+        this.datas = datas;
     }
 
     @NonNull
@@ -45,13 +31,27 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i){
-        myViewHolder.textView.setText(this.textSet[i]);
-        myViewHolder.imageView.setBackgroundResource(this.imgSet[i]);
-        myViewHolder.phoneView.setText(this.phoneSet[i]);
+        RecyclerItem data = datas.get(i);
+        myViewHolder.textView.setText(data.getName());
+        myViewHolder.imageView.setBackgroundResource(data.getImg());
+        myViewHolder.phoneView.setText(data.getPhone());
     }
 
     @Override
     public int getItemCount() {
-        return textSet.length > imgSet.length ? textSet.length : imgSet.length;
+        return datas.size();
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        public ImageView imageView;
+        public TextView textView;
+        public TextView phoneView;
+
+        public MyViewHolder(View view){
+            super(view);
+            this.imageView = view.findViewById(R.id.iv_pic);
+            this.textView = view.findViewById(R.id.tv_text);
+            this.phoneView = view.findViewById(R.id.tv_phone);
+        }
     }
 }

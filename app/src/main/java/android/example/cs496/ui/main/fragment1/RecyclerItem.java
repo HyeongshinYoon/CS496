@@ -16,11 +16,8 @@ public class RecyclerItem {
     public String getName() {
         return name;
     }
-
     public int getImg() {
         return img;
     }
-    public String getPhone() {
-        return phone;
-    }
+    public String getPhone() { return phone; }
 }
