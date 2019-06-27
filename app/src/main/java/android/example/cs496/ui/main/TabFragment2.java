@@ -27,7 +27,7 @@ public class TabFragment2 extends Fragment {
         final int[] picArr = {R.drawable.cat, R.drawable.tree, R.drawable.sunflower, R.drawable.rose, R.drawable.panda,
                 R.drawable.heart, R.drawable.google, R.drawable.tiger, R.drawable.dog, R.drawable.chiba3, R.drawable.chiba,
                 R.drawable.girl, R.drawable.fruit, R.drawable.beach, R.drawable.bird, R.drawable.chiba2, R.drawable.yun2,
-                R.drawable.yun3, R.drawable.yun4, R.drawable.yun5, R.drawable.iu};
+                R.drawable.yun3, R.drawable.yun4, R.drawable.yun5, R.drawable.iu, R.drawable.view};
 
         final View view = inflater.inflate(R.layout.tab_fragment2, container, false);
         gridView = view.findViewById(R.id.gridView1);
