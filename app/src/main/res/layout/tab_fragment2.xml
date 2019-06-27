@@ -15,7 +15,5 @@
         android:stretchMode="columnWidth"
         android:gravity="center"
         android:layout_margin="10dp"
-
         ></GridView>
-
 </LinearLayout>
