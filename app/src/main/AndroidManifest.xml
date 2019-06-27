@@ -23,8 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="android.example.cs496.ui.main.fragment1.PhoneBookActivity">
-        </activity>
+        <activity android:name="android.example.cs496.ui.main.fragment1.PhoneBookActivity"></activity>
+        <activity android:name="android.example.cs496.ui.main.Fragment2SubActivity"></activity>
     </application>
 
 </manifest>
