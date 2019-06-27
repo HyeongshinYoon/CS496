@@ -23,20 +23,57 @@ public class dummyData {
         personInfo.put("name", "Amy");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-1234-5678");
+        personInfo.put("group", "KAIST");
+        personInfo.put("email", "helloworld@kaist.ac.kr");
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
         personInfo.put("name", "Olivia");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-2345-6789");
+        personInfo.put("group", "DGIST");
+        personInfo.put("email", "freedom@dgist.ac.kr");
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
         personInfo.put("name", "Hazel");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-3456-7890");
+        personInfo.put("group", "UNIST");
+        personInfo.put("email", "vacation@unist.ac.kr");
         personArray.put(personInfo);
-        System.out.println("bye");
+
+        personInfo = new JSONObject();
+        personInfo.put("name", "Porter");
+        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("phone", "010-4567-8901");
+        personInfo.put("group", "GIST");
+        personInfo.put("email", "happy@gist.ac.kr");
+        personArray.put(personInfo);
+
+        personInfo = new JSONObject();
+        personInfo.put("name", "Jimmy");
+        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("phone", "010-9876-5432");
+        personInfo.put("group", "Korea.Univ");
+        personInfo.put("email", "trust@korea.ac.kr");
+        personArray.put(personInfo);
+
+        personInfo = new JSONObject();
+        personInfo.put("name", "Emma");
+        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("phone", "010-8765-4321");
+        personInfo.put("group", "Korea.Univ");
+        personInfo.put("email", "faith@cam.ac.uk");
+        personArray.put(personInfo);
+
+        personInfo = new JSONObject();
+        personInfo.put("name", "Kelly");
+        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("phone", "010-8885-2341");
+        personInfo.put("group", "");
+        personInfo.put("email", "bye@cam.ac.uk");
+        personArray.put(personInfo);
     }
 
 
@@ -49,11 +86,11 @@ public class dummyData {
             String name = jObject.getString("name");
             int img = jObject.getInt("img");
             String phone = jObject.getString("phone");
-            RecyclerItem data = new RecyclerItem(name, img, phone);
+            String group = jObject.getString("group");
+            String email = jObject.getString("email");
+            RecyclerItem data = new RecyclerItem(name, img, phone, group, email);
             datas.add(data);
         }
-        System.out.println("Hello");
-        System.out.println(datas);
         return datas;
     }
 }
