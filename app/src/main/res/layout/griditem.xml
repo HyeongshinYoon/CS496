@@ -13,4 +13,6 @@
         android:scaleType="centerCrop"
         android:background="@drawable/photo_frame"/>
 
+
 </LinearLayout>
+

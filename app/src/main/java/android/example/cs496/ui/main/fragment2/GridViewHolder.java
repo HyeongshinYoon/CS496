@@ -5,5 +5,5 @@ import android.widget.TextView;
 
 public class GridViewHolder {
     public ImageView img;
-    public TextView name;
+    //public TextView name;
 }
