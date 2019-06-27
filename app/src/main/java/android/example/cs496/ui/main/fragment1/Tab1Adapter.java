@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> {
 
-    List<RecyclerItem> datas;
+    private List<RecyclerItem> datas;
 
     public Tab1Adapter(List<RecyclerItem> datas){
         this.datas = datas;
@@ -42,16 +42,26 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
         return datas.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView imageView;
         public TextView textView;
         public TextView phoneView;
+        OnClickListener onClickListener;
 
-        public MyViewHolder(View view){
+        public MyViewHolder(@NonNull View view){
             super(view);
             this.imageView = view.findViewById(R.id.iv_pic);
             this.textView = view.findViewById(R.id.tv_text);
             this.phoneView = view.findViewById(R.id.tv_phone);
         }
+
+        @Override
+        public void onClick(View view){
+            onClickListener.onPhoneClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnClickListener {
+        void onPhoneClick(int position);
     }
 }

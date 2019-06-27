@@ -4,6 +4,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical"
-    android:id="@+id/recycler_view"
-    android:layout_marginTop="5dp">
+    android:id="@+id/sub_recycler_view">
 </androidx.recyclerview.widget.RecyclerView>
