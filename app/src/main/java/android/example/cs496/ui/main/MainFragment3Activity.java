@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.example.cs496.R;
 import android.example.cs496.ui.main.fragment3.ForeCastManager;
 import android.example.cs496.ui.main.fragment3.WeatherInfo;
-import android.example.cs496.ui.main.fragment3.WeatherToHanguel;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -48,42 +47,34 @@ public class MainFragment3Activity extends AppCompatActivity {
 
     public String PrintValue() {
         String mData = "";
-        for (int i = 0; i < mWeatherInformation.size(); i++) {
-            mData = mData + mWeatherInformation.get(i).getWeather_Day() + "\r\n"
-                    + mWeatherInformation.get(i).getWeather_Name() + "\r\n"
-                    + mWeatherInformation.get(i).getClouds_Sort()
-                    + " /Cloud amount: " + mWeatherInformation.get(i).getClouds_Value()
-                    + mWeatherInformation.get(i).getClouds_Per() + "\r\n"
-                    + mWeatherInformation.get(i).getWind_Name()
-                    + " /WindSpeed: " + mWeatherInformation.get(i).getWind_Speed() + " mps" + "\r\n"
-                    + "Max: " + mWeatherInformation.get(i).getTemp_Max() + "℃"
-                    + " /Min: " + mWeatherInformation.get(i).getTemp_Min() + "℃" + "\r\n"
-                    + "Humidity: " + mWeatherInformation.get(i).getHumidity() + "%";
+        for (int i = 0; i < 1; i++) {
+            mData = mData
+                    + " /City: " +mWeatherInformation.get(i).getCity() + "\r\n"
+                    + " /Temperature: " +mWeatherInformation.get(i).getTemperature_Value() +' '+ mWeatherInformation.get(i).getTemperature_Unit() + "\r\n"
+                    + mWeatherInformation.get(i).getTemperature_Min()+' '+ mWeatherInformation.get(i).getTemperature_Unit()+"\r\n"
+                    + mWeatherInformation.get(i).getTemperature_Max()+' '+ mWeatherInformation.get(i).getTemperature_Unit()+"\r\n"
+                    + " /Humidity: " + mWeatherInformation.get(i).getHumidity_Value() + mWeatherInformation.get(i).getHumidity_Unit() + "\r\n"
+                    + " /Wind: " + mWeatherInformation.get(i).getWind_Name() + "\r\n"
+                    + " /Clouds: " + mWeatherInformation.get(i).getClouds_Name() + "\r\n"
+                    + " /Precipitation: " + mWeatherInformation.get(i).getPrecipitation_Mode() + "\r\n"
+                    + "/Weather Value: " + mWeatherInformation.get(i).getWeather_Value() + "\r\n"
+                    + "/Last Update: " + mWeatherInformation.get(i).getLast_update() + "\r\n";
 
             mData = mData + "\r\n" + "----------------------------------------------" + "\r\n";
         }
         return mData;
     }
 
-    public void DataChangedToHangeul()
-    {
-        for(int i = 0 ; i <mWeatherInformation.size(); i ++)
-        {
-            WeatherToHanguel mHanguel = new WeatherToHanguel(mWeatherInformation.get(i));
-            mWeatherInformation.set(i,mHanguel.getHangeulWeather());
-        }
-    }
 
     public void DataToInformation()
     {
         for(int i = 0; i < mWeatherData.size(); i++)
         {
             mWeatherInformation.add(new WeatherInfo(
-                    String.valueOf(mWeatherData.get(i).get("weather_Name")),  String.valueOf(mWeatherData.get(i).get("weather_Number")), String.valueOf(mWeatherData.get(i).get("weather_Much")),
-                    String.valueOf(mWeatherData.get(i).get("weather_Type")),  String.valueOf(mWeatherData.get(i).get("wind_Direction")),  String.valueOf(mWeatherData.get(i).get("wind_SortNumber")),
-                    String.valueOf(mWeatherData.get(i).get("wind_SortCode")),  String.valueOf(mWeatherData.get(i).get("wind_Speed")),  String.valueOf(mWeatherData.get(i).get("wind_Name")),
-                    String.valueOf(mWeatherData.get(i).get("temp_Min")),  String.valueOf(mWeatherData.get(i).get("temp_Max")),  String.valueOf(mWeatherData.get(i).get("humidity")),
-                    String.valueOf(mWeatherData.get(i).get("Clouds_Value")),  String.valueOf(mWeatherData.get(i).get("Clouds_Sort")), String.valueOf(mWeatherData.get(i).get("Clouds_Per")),String.valueOf(mWeatherData.get(i).get("day"))
+                    String.valueOf(mWeatherData.get(i).get("city")),  String.valueOf(mWeatherData.get(i).get("temperature_Value")), String.valueOf(mWeatherData.get(i).get("temperature_Min")),
+                    String.valueOf(mWeatherData.get(i).get("temperature_Max")),  String.valueOf(mWeatherData.get(i).get("temperature_Unit")),  String.valueOf(mWeatherData.get(i).get("humidity_Value")),
+                    String.valueOf(mWeatherData.get(i).get("humidity_Unit")),  String.valueOf(mWeatherData.get(i).get("wind_Name")),  String.valueOf(mWeatherData.get(i).get("clouds_Name")),
+                    String.valueOf(mWeatherData.get(i).get("precipitation_Mode")),  String.valueOf(mWeatherData.get(i).get("weather_Value")),  String.valueOf(mWeatherData.get(i).get("last_update"))
             ));
         }
     }
@@ -94,17 +85,15 @@ public class MainFragment3Activity extends AppCompatActivity {
             super.handleMessage(msg);
             switch(msg.what){
                 case THREAD_HANDLER_SUCCESS_INFO :
-                    mForeCast.getmWeather();
                     mWeatherData = mForeCast.getmWeather();
-                    if(mWeatherData.size() ==0)
-                        tv_WeatherInfo.setText("데이터가 없습니다");
-
+                    if(mWeatherData.size() ==0) {
+                        tv_WeatherInfo.setText("No Data :(");
+                    }
                     DataToInformation(); // 자료 클래스로 저장,
                     String data = "";
 
                     data = PrintValue();
-                    DataChangedToHangeul();
-                    data = data + PrintValue();
+//                    data = data + PrintValue();
 
                     tv_WeatherInfo.setText(data);
                     break;
@@ -113,7 +102,6 @@ public class MainFragment3Activity extends AppCompatActivity {
             }
         }
     };
-
 }
 
 

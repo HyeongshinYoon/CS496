@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.example.cs496.ui.main.fragment3.ForeCastManager;
 import android.example.cs496.ui.main.fragment3.WeatherInfo;
-import android.example.cs496.ui.main.fragment3.WeatherToHanguel;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;

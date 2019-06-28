@@ -1,91 +1,58 @@
 package android.example.cs496.ui.main.fragment3;
 
 public class WeatherInfo {
-    String weather_Day;
-    String weather_Name;
-    String weather_Number;
-    String weather_Much;
-    String weather_Type;
-    String wind_Direction;
-    String wind_SortNumber;
-    String wind_SortCode;
-    String wind_Speed;
+    String city;
+    String temperature_Value;
+    String temperature_Min;
+    String temperature_Max;
+    String temperature_Unit;
+    String humidity_Value;
+    String humidity_Unit;
     String wind_Name;
-    String temp_Min;
-    String temp_Max;
-    String humidity;
-    String clouds_Value;
-    String clouds_Sort;
-    String clouds_Per;
+    String clouds_Name;
+    String precipitation_Mode;
+    String weather_Value;
+    String last_update;
 
-    public WeatherInfo(String weather_Name, String weather_Number, String weather_Much,
-                       String weather_Type, String wind_Direction, String wind_SortNumber,
-                       String wind_SortCode, String wind_Speed, String wind_Name,
-                       String temp_Min, String temp_Max, String humidity,
-                       String clouds_Value, String clouds_Sort, String clouds_Per,String weather_Day)
+    public WeatherInfo(String city, String temperature_Value, String temperature_Min, String temperature_Max,
+                       String temperature_Unit, String humidity_Value, String humidity_Unit, String wind_Name,
+                       String clouds_Name, String precipitation_Mode, String weather_Value, String last_update)
     {
-        this.weather_Name = weather_Name;
-        this.weather_Number = weather_Number;
-        this.weather_Much = weather_Much;
-        this.weather_Type = weather_Type;
-        this.wind_Direction = wind_Direction;
-        this.wind_SortNumber = wind_SortNumber;
-        this.wind_SortCode = wind_SortCode;
-        this.wind_Speed = wind_Speed;
-
-        if(wind_Name.equals("")) this.wind_Name = "No Info";
-        else this.wind_Name = wind_Name;
-
-        this.temp_Min = temp_Min;
-        this.temp_Max = temp_Max;
-        this.humidity = humidity;
-        this.clouds_Value = clouds_Value;
-        this.clouds_Sort = clouds_Sort;
-        this.clouds_Per = clouds_Per;
-        this.weather_Day = weather_Day;
+        this.city = city;
+        this.temperature_Value = temperature_Value;
+        this.temperature_Max = temperature_Max;
+        this.temperature_Min = temperature_Min;
+        this.temperature_Unit = temperature_Unit;
+        this.humidity_Value = humidity_Value;
+        this.humidity_Unit = humidity_Unit;
+        this.wind_Name = wind_Name;
+        this.clouds_Name = clouds_Name;
+        this.precipitation_Mode = precipitation_Mode;
+        this.weather_Value = weather_Value;
+        this.last_update = last_update;
     }
 
-    public String getWeather_Name() {
-        return weather_Name;
-    }
+    public String getCity() {return city;}
 
-    public String getWind_Speed() {
-        return wind_Speed;
-    }
+    public String getTemperature_Value() {return temperature_Value;}
 
-    public String getWind_Name() {
-        return wind_Name;
-    }
+    public String getTemperature_Min() {return temperature_Min;}
 
-    public String getTemp_Min() {
-        return temp_Min;
-    }
+    public String getTemperature_Max() {return temperature_Max;}
 
-    public String getTemp_Max() {
-        return temp_Max;
-    }
+    public String getTemperature_Unit() {return temperature_Unit;}
 
-    public String getHumidity() {
-        return humidity;
-    }
+    public String getHumidity_Value() {return humidity_Value;}
 
-    public String getClouds_Value() {
-        return clouds_Value;
-    }
+    public String getHumidity_Unit() {return humidity_Unit;}
 
-    public String getClouds_Sort() {
-        return clouds_Sort;
-    }
+    public String getWind_Name() {return wind_Name;}
 
-    public String getClouds_Per() {
-        return clouds_Per;
-    }
+    public String getClouds_Name() {return clouds_Name;}
 
-    public String getWeather_Day() { return weather_Day; }
+    public String getPrecipitation_Mode() {return precipitation_Mode;}
 
-    public void setWeather_Name(String weather_Name) { this.weather_Name = weather_Name; }
+    public String getWeather_Value() {return weather_Value;}
 
-    public void setWind_Name(String wind_Name) { this.wind_Name = wind_Name; }
-
-    public void setClouds_Sort(String clouds_Sort) {this.clouds_Sort = clouds_Sort;}
+    public String getLast_update() {return last_update;}
 }
