@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
 
+import android.example.cs496.ui.main.SectionsPagerAdapter;
 import static android.example.cs496.ui.main.fragment1.dummyData.setInitialData;
 
 public class MainActivity extends AppCompatActivity {
