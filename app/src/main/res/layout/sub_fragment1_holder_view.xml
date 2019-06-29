@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:textSize="15dp"
-            android:text="phone" />
+            android:text="phone"
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/tv_sub_text"
@@ -27,6 +28,7 @@
             android:layout_gravity="left"
             android:text="010-1234-5678"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#000000" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
