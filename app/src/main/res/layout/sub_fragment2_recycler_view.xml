@@ -3,6 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
-    android:id="@+id/sub_fragment1_recycler_view">
+    android:scrollbars="horizontal"
+    android:id="@+id/sub_fragment2_recycler_view">
 </androidx.recyclerview.widget.RecyclerView>
