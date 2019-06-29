@@ -29,21 +29,21 @@ public class ForeCastManager extends Thread{
         return mWeather;
     }
 
-    public ForeCastManager(String lon, String lat, MainFragment3Activity mContext)
+    public ForeCastManager(Double lon, Double lat, MainFragment3Activity mContext)
     {
-        this.lon = lon ; this.lat = lat;
+        this.lon = lon.toString() ; this.lat = lat.toString();
         this.mContext = mContext;
     }
 
     public ArrayList<ContentValues> GetOpenWeather(String lon,String lat)
     {
-        String city = "London,uk";
         ArrayList<ContentValues> mTotalValue = new ArrayList<ContentValues>();
         ContentValues mContent = new ContentValues();
         String key = "2c5f2be1208a6ad916814bf49934ed6b";
         try{
             URL url = new URL("http://api.openweathermap.org/data/2.5/weather?"+
-                    "q="+city+
+                    "lat="+lat+
+                    "&lon="+lon+
                     "&mode=xml"+
                     "&APPID="+key
             );
@@ -86,9 +86,11 @@ public class ForeCastManager extends Thread{
                         }
                         else if(startTag.equals("weather")){
                             mContent.put("weather_Value", parser.getAttributeValue(null, "value"));
+                            mContent.put("weather_icon", parser.getAttributeValue(null, "icon"));
+                            mContent.put("weather_id", parser.getAttributeValue(null, "number"));
                         }
                         else if (startTag.equals("lastupdate")){
-                            mContent.put("last_update", parser.getAttributeValue(null, "value"));
+                            mContent.put("last_update", parser.getAttributeValue(null,"value"));
                         }
 
                     case XmlPullParser.END_TAG:

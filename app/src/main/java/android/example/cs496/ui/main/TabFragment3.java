@@ -1,36 +1,28 @@
 package android.example.cs496.ui.main;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.example.cs496.ui.main.fragment3.ForeCastManager;
-import android.example.cs496.ui.main.fragment3.WeatherInfo;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.example.cs496.R;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TabFragment3 extends Fragment {
 
     ImageView imageView;
+    long mNow;
+    Date mDate;
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -41,13 +33,19 @@ public class TabFragment3 extends Fragment {
         return view;
     }
 
+    private String getTime(){
+        mNow = System.currentTimeMillis();
+        mDate = new Date(mNow);
+        return mFormat.format(mDate);
+    }
+
     class MyListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Context context = getActivity();
             Toast.makeText(context, "LOADING...", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(context, MainFragment3Activity.class);
-//            intent.putExtra("position", position);
+            intent.putExtra("time", getTime());
             startActivity(intent);
         }
     }
