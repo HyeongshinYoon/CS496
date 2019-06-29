@@ -8,70 +8,88 @@ import android.example.cs496.ui.main.fragment1.PhoneBookActivity;
 import android.example.cs496.ui.main.fragment1.RecyclerItem;
 import android.example.cs496.ui.main.fragment1.RecyclerItemClickListener;
 import android.example.cs496.ui.main.fragment1.Tab1Adapter;
-import android.example.cs496.ui.main.fragment1.dummyData;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.json.JSONException;
-
 import java.util.List;
+
+import static android.example.cs496.ui.main.fragment1.dummyData.refreshData;
 
 
 public class TabFragment1 extends Fragment {
 
+    private static Context context;
     RecyclerView recyclerView;
-    TextView textView;
-    List<RecyclerItem> datas = null;
+    static List<RecyclerItem> datas = null;
     private MainBackPressCloseHandler mainBackPressCloseHandler;
+    Tab1Adapter adapter;
     //RecyclerView.Adapter adapter;
     //RecyclerView.LayoutManager layoutManager;
 
    // private ArrayList<RecyclerItem> tap1Items = new ArrayList<>();
 
     @Nullable
+    @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        final Context context = getActivity();
+        context = getActivity();
         mainBackPressCloseHandler = new MainBackPressCloseHandler(getActivity());
         View v = inflater.inflate(R.layout.tab_fragment1,container,false);
-
-        try {
-            new dummyData();
-            datas = dummyData.getData(context);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        Tab1Adapter adapter = new Tab1Adapter(datas);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        resetData();
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(context.getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
                         Intent intent = new Intent(context, PhoneBookActivity.class);
-                        intent.putExtra("name", datas.get(position).getName());
-                        intent.putExtra("img", datas.get(position).getImg());
-                        intent.putExtra("phone", datas.get(position).getPhone());
-                        intent.putExtra("group", datas.get(position).getGroup());
-                        intent.putExtra("email", datas.get(position).getEmail());
-                        datas.get(position);
-                        startActivity(intent);
+                        RecyclerItem item = datas.get(position);
+                        intent.putExtra("select", item);
+                        startActivityForResult(intent, 0);
                     }
                 }));
         return v;
     }
 
-    public void onBackPressed() {
-        mainBackPressCloseHandler.onBackPressed();
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        resetData();
     }
+
+    public void resetData(){
+        //datas = phoneBookLoader.getData(context);
+        //Collections.sort(datas, AscendingInteger());
+        datas = refreshData();
+        adapter = new Tab1Adapter(context, datas);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+    }
+
+//    public static RecyclerItem getPositionData(int position) {
+//        datas = phoneBookLoader.getData(context);
+////        try {
+////            datas = dummyData.getData(context);
+////        } catch (JSONException e) {
+////            e.printStackTrace();
+////        }
+//        RecyclerItem mPositionData
+//                = new RecyclerItem(
+//                        datas.get()
+//                        datas.get(position).getName(),
+//                datas.get(position).getImg(),
+//                datas.get(position).getPhone(),
+//                datas.get(position).getGroup(),
+//                datas.get(position).getEmail());
+//        return mPositionData;
+//    }
+//    public void onBackPressed() {
+//        mainBackPressCloseHandler.onBackPressed();
+//    }
 }
