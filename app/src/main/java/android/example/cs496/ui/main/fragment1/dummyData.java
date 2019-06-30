@@ -14,6 +14,8 @@ public class dummyData {
 
     static JSONArray personArray;
     static List<RecyclerItem> datas = new ArrayList<>();
+    private static int numData = 0;
+    private static int lastNum = 0;
 
     public dummyData() throws JSONException {
         //person의 한명 정보가 들어갈 JSONObject 선언
@@ -102,6 +104,11 @@ public class dummyData {
             datas.add(data);
         }
         Collections.sort(datas);
+        lastNum = numData = getCountData();
+    }
+
+    public static int getCountData(){
+        return datas.size();
     }
 
     public static List<RecyclerItem> refreshData() {
@@ -109,7 +116,7 @@ public class dummyData {
         return datas;
     }
 
-    public static void editData(int position, RecyclerItem new_item) throws JSONException {
+    public static void editData(int position, RecyclerItem new_item) {
 
         int real_position = 0;
         for (int i = 0; i < datas.size(); i++) {
@@ -122,13 +129,27 @@ public class dummyData {
         System.out.println(real_position);
         datas.add(new_item);
         Collections.sort(datas);
+    }
 
-        personArray.getJSONObject(real_position).put("name", new_item.getName());
-        personArray.getJSONObject(real_position).put("img", new_item.getImg());
-        personArray.getJSONObject(real_position).put("phone", new_item.getPhone());
-        personArray.getJSONObject(real_position).put("group", new_item.getGroup());
-        personArray.getJSONObject(real_position).put("email", new_item.getEmail());
+    public static void deleteData(int position, RecyclerItem new_item) {
 
-        System.out.println(personArray);
+        int real_position = 0;
+        for (int i = 0; i < datas.size(); i++) {
+            if (datas.get(i).getId() == position) {
+                real_position = i;
+                break;
+            }
+        }
+        datas.remove(real_position);
+        numData = datas.size();
+    }
+
+    public static void insertData(RecyclerItem new_item) {
+
+        new_item.setId(lastNum);
+        lastNum += 1;
+        datas.add(new_item);
+        Collections.sort(datas);
+        numData = datas.size();
     }
 }

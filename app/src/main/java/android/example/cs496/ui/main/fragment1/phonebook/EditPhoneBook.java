@@ -85,12 +85,8 @@ public class EditPhoneBook extends AppCompatActivity implements View.OnClickList
                         textPhone.getText().toString(),
                         textGroup.getText().toString(),
                         textEmail.getText().toString());
-                try {
-                    System.out.println("bye");
-                    editData(mRecycelerItem.getId(), newRecyclerItem);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+                editData(mRecycelerItem.getId(), newRecyclerItem);
                 Toast.makeText(getApplicationContext(), "수정 완료!", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent();
                 intent.putExtra("new_item",newRecyclerItem);
