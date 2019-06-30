@@ -40,6 +40,7 @@ public class TabFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         context = getActivity();
         mainBackPressCloseHandler = new MainBackPressCloseHandler(getActivity());
+
         View v = inflater.inflate(R.layout.tab_fragment1,container,false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -64,32 +65,9 @@ public class TabFragment1 extends Fragment {
     }
 
     public void resetData(){
-        //datas = phoneBookLoader.getData(context);
-        //Collections.sort(datas, AscendingInteger());
         datas = refreshData();
         adapter = new Tab1Adapter(context, datas);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
     }
-
-//    public static RecyclerItem getPositionData(int position) {
-//        datas = phoneBookLoader.getData(context);
-////        try {
-////            datas = dummyData.getData(context);
-////        } catch (JSONException e) {
-////            e.printStackTrace();
-////        }
-//        RecyclerItem mPositionData
-//                = new RecyclerItem(
-//                        datas.get()
-//                        datas.get(position).getName(),
-//                datas.get(position).getImg(),
-//                datas.get(position).getPhone(),
-//                datas.get(position).getGroup(),
-//                datas.get(position).getEmail());
-//        return mPositionData;
-//    }
-//    public void onBackPressed() {
-//        mainBackPressCloseHandler.onBackPressed();
-//    }
 }

@@ -1,20 +1,29 @@
 package android.example.cs496;
 
+import android.Manifest;
 import android.example.cs496.ui.main.SectionsPagerAdapter;
 import android.example.cs496.ui.main.TabFragment1;
 import android.example.cs496.ui.main.TabFragment2;
 import android.example.cs496.ui.main.TabFragment3;
 import android.example.cs496.ui.main.fragment1.dummyData;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 
 import org.json.JSONException;
 
 import android.example.cs496.ui.main.SectionsPagerAdapter;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.example.cs496.ui.main.fragment1.dummyData.setInitialData;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +36,39 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        checkPermissions();
+        initView();
+    }
+
+    public void setupViewPager(ViewPager mViewPager) {
+        sectionsPagerAdapter.addFragment(new TabFragment1(), "Phone");
+        sectionsPagerAdapter.addFragment(new TabFragment2(), "Photos");
+        sectionsPagerAdapter.addFragment(new TabFragment3(), "Weather");
+        mViewPager.setAdapter(sectionsPagerAdapter);
+    }
+
+    private void checkPermissions() {
+        PermissionListener permissionlistener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+            }
+            @Override
+            public void onPermissionDenied(List<String> deniedPermissions) {
+                Toast.makeText(MainActivity.this, "Permission Denied\n" + deniedPermissions.toString(), Toast.LENGTH_SHORT).show();
+            }
+        };
+        TedPermission.with(this)
+                .setPermissionListener(permissionlistener)
+                .setDeniedMessage("If you reject permission, you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setPermissions(new String[] {
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.READ_CONTACTS,
+                        Manifest.permission.CALL_PHONE,
+                        Manifest.permission.SEND_SMS})
+                .check();
+    }
+
+    public void initView(){
         //Initializing the TabLayout;
         tabs = findViewById(R.id.tabs);
         try {
@@ -54,12 +96,5 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-    }
-
-    public void setupViewPager(ViewPager mViewPager) {
-        sectionsPagerAdapter.addFragment(new TabFragment1(), "Phone");
-        sectionsPagerAdapter.addFragment(new TabFragment2(), "Photos");
-        sectionsPagerAdapter.addFragment(new TabFragment3(), "Weather");
-        mViewPager.setAdapter(sectionsPagerAdapter);
     }
 }

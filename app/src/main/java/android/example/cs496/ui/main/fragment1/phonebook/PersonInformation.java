@@ -53,7 +53,7 @@ public class PersonInformation extends Fragment {
         }
         SubCardAdapter adapter = new SubCardAdapter(this.title, this.text);
         View v = inflater.inflate(R.layout.sub_fragment1_recycler_view, container, false);
-        recyclerView = (RecyclerView) v.findViewById(R.id.sub_recycler_view);
+        recyclerView = (RecyclerView) v.findViewById(R.id.sub_fragment1_recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 

@@ -51,7 +51,8 @@
             android:layout_gravity="center"
             android:text="Hello World"
             android:textSize="30dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/tv_sub_group"
@@ -101,7 +102,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/sub_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
