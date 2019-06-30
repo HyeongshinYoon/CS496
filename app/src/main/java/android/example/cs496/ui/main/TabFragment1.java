@@ -40,6 +40,7 @@ public class TabFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         context = getActivity();
         mainBackPressCloseHandler = new MainBackPressCloseHandler(getActivity());
+
         View v = inflater.inflate(R.layout.tab_fragment1,container,false);
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
