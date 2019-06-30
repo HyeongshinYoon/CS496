@@ -16,11 +16,6 @@ import static android.app.PendingIntent.getActivity;
 public class Fragment2SubActivity extends AppCompatActivity {
     ViewPager pager;
     int position;
-    final int[] picArr = {R.drawable.cat, R.drawable.tree, R.drawable.sunflower, R.drawable.rose, R.drawable.panda,
-            R.drawable.heart, R.drawable.google, R.drawable.tiger, R.drawable.dog, R.drawable.chiba3, R.drawable.chiba,
-            R.drawable.girl, R.drawable.fruit, R.drawable.beach, R.drawable.bird, R.drawable.chiba2, R.drawable.yun2,
-            R.drawable.yun3, R.drawable.yun4, R.drawable.yun5, R.drawable.iu, R.drawable.view, R.drawable.goeun_img1,
-            R.drawable.goeun_img2};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +33,6 @@ public class Fragment2SubActivity extends AppCompatActivity {
         //CustomAdapter에게 LayoutInflater 객체 전달
 
         SubFragment2Adapter adapter= new SubFragment2Adapter(getLayoutInflater());
-        System.out.println(pager);
         //ViewPager에 Adapter 설정
         pager.setAdapter(adapter);
         pager.setCurrentItem(position, true);
