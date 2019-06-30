@@ -47,4 +47,3 @@ public class Fragment2SubActivity extends AppCompatActivity {
 //        photoView.setImageResource(picArr[position]);
     }
 }
-
