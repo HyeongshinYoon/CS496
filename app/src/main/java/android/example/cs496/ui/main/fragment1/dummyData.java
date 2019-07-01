@@ -111,14 +111,10 @@ public class dummyData {
         personInfo.put("group", "");
         personInfo.put("email", "good_day@naver.com");
         personArray.put(personInfo);
-
-        System.out.println(personArray);
     }
 
 
     public static void setInitialData() throws JSONException {
-        System.out.println(personArray.toString());
-
         datas = new ArrayList<>();
         for (int i = 0; i < personArray.length(); i++) {
             JSONObject jObject = personArray.getJSONObject(i);
@@ -153,7 +149,6 @@ public class dummyData {
             }
         }
         datas.remove(real_position);
-        System.out.println(real_position);
         datas.add(new_item);
         Collections.sort(datas);
     }
