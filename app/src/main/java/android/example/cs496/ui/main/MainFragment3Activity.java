@@ -23,8 +23,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import org.xmlpull.v1.XmlPullParserException;
-
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -55,7 +53,7 @@ public class MainFragment3Activity extends AppCompatActivity {
 
     long mNow;
     Date mDate;
-    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    SimpleDateFormat mFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     ForeCastManager mForeCast;
     MainFragment3Activity mThis;
