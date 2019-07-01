@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                         Manifest.permission.ACCESS_COARSE_LOCATION,
                         Manifest.permission.READ_CONTACTS,
                         Manifest.permission.CALL_PHONE,
+                        Manifest.permission.CAMERA,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.SEND_SMS})
                 .check();
     }

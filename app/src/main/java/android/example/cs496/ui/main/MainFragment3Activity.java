@@ -104,8 +104,7 @@ public class MainFragment3Activity extends AppCompatActivity {
     }
 
     public void Initialize() {
-        System.out.println(lat);
-        System.out.println(lon);
+
         tv_CityInfo = findViewById(R.id.CityInfo);
         tv_WeatherCat = findViewById(R.id.WeatherCat);
         tv_LastUpdate = findViewById(R.id.LastUpdate);
