@@ -26,6 +26,17 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
         this.context = context;
     }
 
+    public void removeItem(int position) {
+        datas.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, datas.size());
+    }
+    public void restoreItem(RecyclerItem model, int position) {
+        datas.add(position, model);
+        // notify item added by position
+        notifyItemInserted(position);
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i){
@@ -45,10 +56,14 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
         myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_foreground));
         myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(data.getImg()));
         //myViewHolder.imageView.setImageResource(data.getImg());
-        myViewHolder.imageView.setBackground(new ShapeDrawable(new OvalShape()));
+        ShapeDrawable bgShape = new ShapeDrawable(new OvalShape());
+//        int colorPrimaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
+//        bgShape.setTint(colorPrimaryDark);
+        myViewHolder.imageView.setBackground(bgShape);
         myViewHolder.imageView.setClipToOutline(true);
 
         if ( i == 0 ){
+            myViewHolder.imageView.setPadding(20, 20, 20, 20);
             int colorPrimaryLight = context.getResources().getColor(R.color.colorPrimaryLight);
             myViewHolder.cardView.setCardBackgroundColor(colorPrimaryLight);
             myViewHolder.textView.setText("Add a New Friend:)");
