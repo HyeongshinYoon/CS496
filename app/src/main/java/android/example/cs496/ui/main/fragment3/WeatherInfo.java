@@ -66,7 +66,7 @@ public class WeatherInfo {
         if (_id == 210 || _id == 211 || _id == 212 || _id == 221) {cat_id = 7;}
         else if (_id < 600) {cat_id = 5;}
         else if(_id < 700) {cat_id = 4;}
-        else if(_id < 800) {cat_id = 0;}
+        else if(_id < 800 || _id==803 || _id==804) {cat_id = 0;}
         else if(_id < 900) {
             if (temp > 26) cat_id = 6;
             else if(temp < 15) cat_id = 1;

@@ -2,6 +2,7 @@ package android.example.cs496.ui.main.fragment1;
 
 import android.content.Context;
 import android.example.cs496.R;
+import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -25,6 +27,17 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
         this.context = context;
     }
 
+    public void removeItem(int position) {
+        datas.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, datas.size());
+    }
+    public void restoreItem(RecyclerItem model, int position) {
+        datas.add(position, model);
+        // notify item added by position
+        notifyItemInserted(position);
+    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i){
@@ -35,14 +48,36 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i){
+
         RecyclerItem data = datas.get(i);
+        System.out.println(i);
+        System.out.println(data.getName());
         myViewHolder.textView.setText(data.getName());
         myViewHolder.phoneView.setText(data.getPhone());
-
-        myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_foreground));
-        myViewHolder.imageView.setImageResource(data.getImg());
-        myViewHolder.imageView.setBackground(new ShapeDrawable(new OvalShape()));
+        ShapeDrawable bgShape;
+        int colorPrimaryLight = context.getResources().getColor(R.color.colorPrimaryLight);
+        if ( i == 0 ){
+            myViewHolder.imageView.setPadding(20, 20, 20, 20);
+            //int colorPrimaryLight = context.getResources().getColor(R.color.colorPrimaryLight);
+            myViewHolder.cardView.setCardBackgroundColor(colorPrimaryLight);
+            myViewHolder.textView.setText("Add a New Friend:)");
+            myViewHolder.textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            myViewHolder.textView.setTextColor(Color.WHITE);
+            myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_addperson));
+            //myViewHolder.imageView.setImageResource(data.getImg());
+            bgShape = new ShapeDrawable(new OvalShape());
+            bgShape.setTint(Color.WHITE);
+        }
+        else {
+            myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_foreground));
+            //myViewHolder.imageView.setImageResource(data.getImg());
+            bgShape = new ShapeDrawable(new OvalShape());
+            bgShape.setTint(colorPrimaryLight);
+        }
+        myViewHolder.imageView.setBackground(bgShape);
         myViewHolder.imageView.setClipToOutline(true);
+
+
 
 //        Bitmap profile = loadContactPhoto(context.getContentResolver(), data.getId(), data.getImg());
 //        if(profile != null) {
@@ -67,6 +102,7 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
         public ImageView imageView;
         public TextView textView;
         public TextView phoneView;
+        public CardView cardView;
         OnClickListener onClickListener;
 
         public MyViewHolder(@NonNull View view){
@@ -74,6 +110,7 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
             this.imageView = view.findViewById(R.id.iv_pic);
             this.textView = view.findViewById(R.id.tv_text);
             this.phoneView = view.findViewById(R.id.tv_phone);
+            this.cardView = view.findViewById(R.id.sub_card);
         }
 
         @Override
