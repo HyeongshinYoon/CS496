@@ -15,6 +15,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.health.SystemHealthManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -102,8 +103,7 @@ public class MainFragment3Activity extends AppCompatActivity {
     }
 
     public void Initialize() {
-        System.out.println(lat);
-        System.out.println(lon);
+
         tv_CityInfo = findViewById(R.id.CityInfo);
         tv_WeatherCat = findViewById(R.id.WeatherCat);
         tv_LastUpdate = findViewById(R.id.LastUpdate);
@@ -257,8 +257,10 @@ public class MainFragment3Activity extends AppCompatActivity {
                     if(mWeatherData.size() ==0) {
                         tv_WeatherInfo6.setText("No Data :(");
                     }
-                    DataToInformation(); // 자료 클래스로 저장,
-                    AssignValue();
+                    else {
+                        DataToInformation(); // 자료 클래스로 저장,
+                        AssignValue();
+                    }
                     break;
                 default:
                     break;

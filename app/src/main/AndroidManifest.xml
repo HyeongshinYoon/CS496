@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.example.cs496">
 
+    <uses-feature android:name="android.hardware.camera"/>
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
@@ -12,7 +14,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.SEND_SMS"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -36,6 +39,7 @@
         <activity android:name=".ui.main.fragment1.phonebook.MessageSend"></activity>
         <activity android:name=".ui.main.fragment1.phonebook.EditPhoneBook"></activity>
         <activity android:name="android.example.cs496.ui.main.Fragment2SubActivity"></activity>
+        <activity android:name="android.example.cs496.ui.main.Fragment2Camera"></activity>
 
         <activity android:name="android.example.cs496.ui.main.MainFragment3Activity"></activity>
 
