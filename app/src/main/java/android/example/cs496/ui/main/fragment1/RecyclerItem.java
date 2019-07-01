@@ -74,6 +74,6 @@ public class RecyclerItem
 
     @Override
     public int compareTo(RecyclerItem r){
-        return this.getName().compareTo(r.getName());
+        return this.getName().toUpperCase().compareTo(r.getName().toUpperCase());
     }
 }

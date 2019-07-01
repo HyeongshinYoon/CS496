@@ -75,7 +75,7 @@
                                 android:text="Amy"
                                 android:textSize="23dp"
                                 android:textStyle="bold"
-                                android:digits="/n/t"
+                                android:minWidth="150dp"
                                 android:maxLines="1"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -107,6 +107,7 @@
                                 android:textSize="23dp"
                                 android:textStyle="bold"
                                 android:digits="0123456789-"
+                                android:minWidth="150dp"
                                 android:maxLines="1"/>
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -137,7 +138,7 @@
                                 android:text="KAIST"
                                 android:textSize="23dp"
                                 android:textStyle="bold"
-                                android:digits="/n/t"
+                                android:minWidth="150dp"
                                 android:maxLines="1" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -168,6 +169,7 @@
                                 android:text="hyeongshin@kaist.ac.kr"
                                 android:textSize="23dp"
                                 android:textStyle="bold"
+                                android:minWidth="150dp"
                                 android:maxLines="1" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -188,7 +190,7 @@
                 android:gravity="center"
                 android:background="#ffffff"
                 android:text="Cancel"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryLight"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/set_save"

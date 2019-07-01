@@ -24,6 +24,15 @@ public class dummyData {
 
         //정보 입력
         personInfo.put("id", 0);
+        personInfo.put("name", "");
+        personInfo.put("img", R.drawable.ic_addperson);
+        personInfo.put("phone", "");
+        personInfo.put("group", "");
+        personInfo.put("email", "");
+        personArray.put(personInfo);
+
+        personInfo = new JSONObject();
+        personInfo.put("id", 1);
         personInfo.put("name", "Amy");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-6355-5770");
@@ -32,7 +41,7 @@ public class dummyData {
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
-        personInfo.put("id", 1);
+        personInfo.put("id", 2);
         personInfo.put("name", "Olivia");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-2345-6789");
@@ -41,7 +50,7 @@ public class dummyData {
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
-        personInfo.put("id", 2);
+        personInfo.put("id", 3);
         personInfo.put("name", "Hazel");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-3456-7890");
@@ -50,7 +59,7 @@ public class dummyData {
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
-        personInfo.put("id", 3);
+        personInfo.put("id", 4);
         personInfo.put("name", "Porter");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-4567-8901");
@@ -59,7 +68,7 @@ public class dummyData {
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
-        personInfo.put("id", 4);
+        personInfo.put("id", 5);
         personInfo.put("name", "Jimmy");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-9876-5432");
@@ -68,7 +77,7 @@ public class dummyData {
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
-        personInfo.put("id", 5);
+        personInfo.put("id", 6);
         personInfo.put("name", "Emma");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-8765-4321");
@@ -77,7 +86,7 @@ public class dummyData {
         personArray.put(personInfo);
 
         personInfo = new JSONObject();
-        personInfo.put("id", 6);
+        personInfo.put("id", 7);
         personInfo.put("name", "Kelly");
         personInfo.put("img", R.drawable.ic_launcher_foreground);
         personInfo.put("phone", "010-8885-2341");
@@ -146,6 +155,7 @@ public class dummyData {
 
     public static void insertData(RecyclerItem new_item) {
 
+        new_item.setImg(R.drawable.ic_launcher_foreground);
         new_item.setId(lastNum);
         lastNum += 1;
         datas.add(new_item);

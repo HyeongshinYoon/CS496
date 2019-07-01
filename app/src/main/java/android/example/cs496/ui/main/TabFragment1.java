@@ -8,6 +8,7 @@ import android.example.cs496.ui.main.fragment1.PhoneBookActivity;
 import android.example.cs496.ui.main.fragment1.RecyclerItem;
 import android.example.cs496.ui.main.fragment1.RecyclerItemClickListener;
 import android.example.cs496.ui.main.fragment1.Tab1Adapter;
+import android.example.cs496.ui.main.fragment1.phonebook.EditPhoneBook;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,10 +50,19 @@ public class TabFragment1 extends Fragment {
                 new RecyclerItemClickListener(context.getApplicationContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(context, PhoneBookActivity.class);
-                        RecyclerItem item = datas.get(position);
-                        intent.putExtra("select", item);
-                        startActivityForResult(intent, 0);
+                        if(position == 0){
+                            Intent intent = new Intent(context, EditPhoneBook.class);
+                            RecyclerItem item = new RecyclerItem();
+                            intent.putExtra("select", item);
+                            intent.putExtra("state", 1);
+                            startActivityForResult(intent, 0);
+                        }
+                        else {
+                            Intent intent = new Intent(context, PhoneBookActivity.class);
+                            RecyclerItem item = datas.get(position);
+                            intent.putExtra("select", item);
+                            startActivityForResult(intent, 0);
+                        }
                     }
                 }));
         return v;

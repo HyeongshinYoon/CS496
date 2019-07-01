@@ -84,6 +84,7 @@ public class PhoneBookActivity extends AppCompatActivity implements View.OnClick
                 System.out.println("hello");
                 Intent mintent = new Intent(this, EditPhoneBook.class);
                 mintent.putExtra("select", mRecycelerItem);
+                mintent.putExtra("state", 2);
                 startActivityForResult(mintent, 0);
                 break;
         }
