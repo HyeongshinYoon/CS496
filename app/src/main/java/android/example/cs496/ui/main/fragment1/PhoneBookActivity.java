@@ -6,6 +6,7 @@ import android.example.cs496.ui.main.fragment1.phonebook.EditPhoneBook;
 import android.example.cs496.ui.main.fragment1.phonebook.MessageSend;
 import android.example.cs496.ui.main.fragment1.phonebook.PersonInformation;
 import android.example.cs496.ui.main.fragment1.phonebook.PhoneBookPagerAdapter;
+import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
@@ -115,9 +116,10 @@ public class PhoneBookActivity extends AppCompatActivity implements View.OnClick
 
         //loadImageView();
         ImageView imageView = findViewById(R.id.iv_sub_img);
-        imageView.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_launcher_foreground));
-        imageView.setImageResource(mRecycelerItem.getImg());
-        imageView.setBackground(new ShapeDrawable(new OvalShape()));
+        imageView.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_launcher_foreground_primarylight));
+        ShapeDrawable bgShape = new ShapeDrawable(new OvalShape());
+        bgShape.setTint(Color.WHITE);
+        imageView.setBackground(bgShape);
         imageView.setClipToOutline(true);
         TextView textName = findViewById(R.id.tv_sub_name);
         textName.setText(mRecycelerItem.getName());

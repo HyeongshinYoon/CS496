@@ -94,7 +94,7 @@ public class TabFragment1 extends Fragment {
                     final int deletedPosition = position;
                     // showing snack bar with Undo option
                     adapter.removeItem(position);
-                    Snackbar snackbar = Snackbar.make(getActivity().getWindow().getDecorView().getRootView(), " removed from Recyclerview!", Snackbar.LENGTH_LONG);
+                    Snackbar snackbar = Snackbar.make(getActivity().getWindow().getDecorView().getRootView(), " removed from Contacts!", Snackbar.LENGTH_LONG);
                     snackbar.setAction("UNDO", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {

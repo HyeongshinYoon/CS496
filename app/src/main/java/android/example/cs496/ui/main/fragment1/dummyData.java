@@ -34,7 +34,7 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 1);
         personInfo.put("name", "Amy");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-6355-5770");
         personInfo.put("group", "KAIST");
         personInfo.put("email", "helloworld@kaist.ac.kr");
@@ -43,7 +43,7 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 2);
         personInfo.put("name", "Olivia");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-2345-6789");
         personInfo.put("group", "DGIST");
         personInfo.put("email", "freedom@dgist.ac.kr");
@@ -52,7 +52,7 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 3);
         personInfo.put("name", "Hazel");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-3456-7890");
         personInfo.put("group", "UNIST");
         personInfo.put("email", "vacation@unist.ac.kr");
@@ -61,7 +61,7 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 4);
         personInfo.put("name", "Porter");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-4567-8901");
         personInfo.put("group", "GIST");
         personInfo.put("email", "happy@gist.ac.kr");
@@ -70,7 +70,7 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 5);
         personInfo.put("name", "Jimmy");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-9876-5432");
         personInfo.put("group", "Korea.Univ");
         personInfo.put("email", "trust@korea.ac.kr");
@@ -79,7 +79,7 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 6);
         personInfo.put("name", "Emma");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-8765-4321");
         personInfo.put("group", "Korea.Univ");
         personInfo.put("email", "faith@cam.ac.uk");
@@ -88,10 +88,28 @@ public class dummyData {
         personInfo = new JSONObject();
         personInfo.put("id", 7);
         personInfo.put("name", "Kelly");
-        personInfo.put("img", R.drawable.ic_launcher_foreground);
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
         personInfo.put("phone", "010-8885-2341");
         personInfo.put("group", "");
         personInfo.put("email", "bye@cam.ac.uk");
+        personArray.put(personInfo);
+
+        personInfo = new JSONObject();
+        personInfo.put("id", 8);
+        personInfo.put("name", "Zoe");
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
+        personInfo.put("phone", "010-1212-9871");
+        personInfo.put("group", "KAIST");
+        personInfo.put("email", "cs496.happy@kaist.ac.kr");
+        personArray.put(personInfo);
+
+        personInfo = new JSONObject();
+        personInfo.put("id", 9);
+        personInfo.put("name", "Aria");
+        personInfo.put("img", R.drawable.ic_launcher_foreground_primarylight);
+        personInfo.put("phone", "010-3333-5544");
+        personInfo.put("group", "");
+        personInfo.put("email", "good_day@naver.com");
         personArray.put(personInfo);
 
         System.out.println(personArray);
@@ -155,7 +173,7 @@ public class dummyData {
 
     public static void insertData(RecyclerItem new_item) {
 
-        new_item.setImg(R.drawable.ic_launcher_foreground);
+        new_item.setImg(R.drawable.ic_launcher_foreground_primarylight);
         new_item.setId(lastNum);
         lastNum += 1;
         datas.add(new_item);

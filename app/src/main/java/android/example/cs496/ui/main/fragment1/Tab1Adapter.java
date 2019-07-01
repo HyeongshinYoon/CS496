@@ -2,6 +2,7 @@ package android.example.cs496.ui.main.fragment1;
 
 import android.content.Context;
 import android.example.cs496.R;
+import android.graphics.Color;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.view.LayoutInflater;
@@ -53,22 +54,30 @@ public class Tab1Adapter extends RecyclerView.Adapter<Tab1Adapter.MyViewHolder> 
         System.out.println(data.getName());
         myViewHolder.textView.setText(data.getName());
         myViewHolder.phoneView.setText(data.getPhone());
-        myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_foreground));
-        myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(data.getImg()));
-        //myViewHolder.imageView.setImageResource(data.getImg());
-        ShapeDrawable bgShape = new ShapeDrawable(new OvalShape());
-//        int colorPrimaryDark = context.getResources().getColor(R.color.colorPrimaryDark);
-//        bgShape.setTint(colorPrimaryDark);
-        myViewHolder.imageView.setBackground(bgShape);
-        myViewHolder.imageView.setClipToOutline(true);
-
+        ShapeDrawable bgShape;
+        int colorPrimaryLight = context.getResources().getColor(R.color.colorPrimaryLight);
         if ( i == 0 ){
             myViewHolder.imageView.setPadding(20, 20, 20, 20);
-            int colorPrimaryLight = context.getResources().getColor(R.color.colorPrimaryLight);
+            //int colorPrimaryLight = context.getResources().getColor(R.color.colorPrimaryLight);
             myViewHolder.cardView.setCardBackgroundColor(colorPrimaryLight);
             myViewHolder.textView.setText("Add a New Friend:)");
             myViewHolder.textView.setGravity(View.TEXT_ALIGNMENT_CENTER);
+            myViewHolder.textView.setTextColor(Color.WHITE);
+            myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_addperson));
+            //myViewHolder.imageView.setImageResource(data.getImg());
+            bgShape = new ShapeDrawable(new OvalShape());
+            bgShape.setTint(Color.WHITE);
         }
+        else {
+            myViewHolder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_launcher_foreground));
+            //myViewHolder.imageView.setImageResource(data.getImg());
+            bgShape = new ShapeDrawable(new OvalShape());
+            bgShape.setTint(colorPrimaryLight);
+        }
+        myViewHolder.imageView.setBackground(bgShape);
+        myViewHolder.imageView.setClipToOutline(true);
+
+
 
 //        Bitmap profile = loadContactPhoto(context.getContentResolver(), data.getId(), data.getImg());
 //        if(profile != null) {

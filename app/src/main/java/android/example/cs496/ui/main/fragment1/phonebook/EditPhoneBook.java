@@ -44,8 +44,11 @@ public class EditPhoneBook extends AppCompatActivity implements View.OnClickList
         //mRecycelerItem = getPositionData(mPosition);
 
         ImageView imageView = findViewById(R.id.iv_set_img);
-        imageView.setImageResource(R.drawable.cat);
-        imageView.setBackground(new ShapeDrawable(new OvalShape()));
+        imageView.setImageResource(R.drawable.ic_launcher_foreground);
+        int colorPrimaryLight = getResources().getColor(R.color.colorPrimaryLight);
+        ShapeDrawable bgShape = new ShapeDrawable(new OvalShape());
+        bgShape.setTint(colorPrimaryLight);
+        imageView.setBackground(bgShape);
         imageView.setClipToOutline(true);
         textName = findViewById(R.id.tv_sub_edit_name);
         textName.setText(mRecycelerItem.getName());
