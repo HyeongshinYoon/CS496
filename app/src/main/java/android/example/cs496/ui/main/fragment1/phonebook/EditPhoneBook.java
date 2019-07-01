@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import org.json.JSONException;
-
 import static android.example.cs496.ui.main.fragment1.dummyData.editData;
+import static android.example.cs496.ui.main.fragment1.dummyData.insertData;
 
 //import static android.example.cs496.ui.main.fragment1.phoneBookLoader.EditContactsInfo;
 
@@ -28,6 +27,7 @@ public class EditPhoneBook extends AppCompatActivity implements View.OnClickList
     private Button mSave, mCancel;
     private EditText textName, textPhone, textGroup, textEmail;
     private RecyclerItem mRecycelerItem;
+    private int mState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class EditPhoneBook extends AppCompatActivity implements View.OnClickList
 
         Intent intent = getIntent();
         mRecycelerItem = (RecyclerItem) intent.getSerializableExtra("select");
+        mState = intent.getIntExtra("state", 0);
         //mRecycelerItem = getPositionData(mPosition);
 
         ImageView imageView = findViewById(R.id.iv_set_img);
@@ -85,16 +86,19 @@ public class EditPhoneBook extends AppCompatActivity implements View.OnClickList
                         textPhone.getText().toString(),
                         textGroup.getText().toString(),
                         textEmail.getText().toString());
-                try {
-                    System.out.println("bye");
-                    editData(mRecycelerItem.getId(), newRecyclerItem);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(mState == 1){
+                    insertData(newRecyclerItem);
+                    Toast.makeText(getApplicationContext(), "추가 완료!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent();
+                    setResult(1, intent);
                 }
-                Toast.makeText(getApplicationContext(), "수정 완료!", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent();
-                intent.putExtra("new_item",newRecyclerItem);
-                setResult(1, intent);
+                if(mState == 2){
+                    editData(mRecycelerItem.getId(), newRecyclerItem);
+                    Toast.makeText(getApplicationContext(), "수정 완료!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent();
+                    intent.putExtra("new_item", newRecyclerItem);
+                    setResult(1, intent);
+                }
                 finish();
                 break;
             case R.id.set_cancel:
